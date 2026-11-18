@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1564b0">
+  <meta name="description" content="Enter PLANET.EXE, an ecological desktop with a living aquarium, eco devices and a biosphere media player.">
+  <title>PLANET.EXE · Biosphere Desktop</title>
+  <link rel="icon" href="assets/planet.png">
+  <link rel="stylesheet" href="desktop.css">
+  <script src="desktop.js" defer></script>
+</head>
+<body>
+  <header class="system-bar">
+    <button class="os-brand" data-open="home"><img src="assets/planet.png" alt="">Planet OS</button>
+    <i class="divider"></i><span class="top-path">Desktop</span>
+    <div class="top-end"><span class="led"></span> System online <i class="divider"></i><span>BIOSPHERE EDITION</span></div>
+  </header>
+  <main id="desktop" aria-label="Planet OS desktop">
+    <div class="desk-collage">
+      <button class="floating-disc" data-open="player" title="Open Planet Media Player" aria-label="Open Planet Media Player"><img src="assets/info.png" alt=""></button>
+      <button class="water-orb" data-open="aquarium" title="Open Aquarium" aria-label="Open Aquarium"><img src="assets/water-orb.webp" alt=""></button>
+      <img class="loose-leaf" src="assets/leaf.png" alt="">
+    </div>
+    <nav id="shortcuts" aria-label="Desktop shortcuts"></nav>
+    <section class="window home" id="home" aria-label="PLANET.EXE brand explorer">
+      <div class="chrome" data-title="PLANET.EXE — Brand Explorer"></div>
+      <div class="address"><span>Address</span><div class="url"><img src="assets/planet.png" alt="">planet://home/welcome</div><span class="connection" aria-label="Connected">●</span></div>
+      <div class="home-scroll">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="edition"><span class="led"></span> BIOSPHERE EDITION</div>
+            <h1>PLANET<span>.EXE</span></h1>
+            <p>Nature is our<br>operating system.</p>
+            <button class="enter-btn" data-open="planet"><span class="play-mark"></span>Explore My Planet</button>
+          </div>
+        </div>
+        <div class="directory">
+          <h2>System directory<span></span></h2>
+          <div id="directory-links"></div>
+        </div>
+      </div>
+      <div class="status"><span><i class="led"></i> Ready</span><span>Planet OS 2004</span></div>
+    </section>
+    <section class="window aquarium" id="aquarium" aria-label="Aquarium">
+      <div class="chrome" data-title="Aquarium.exe"></div>
+      <button id="tank" aria-label="Feed fish at this point in the aquarium"><span class="live"><i></i> LIVE</span><span id="swimmers"></span></button>
+      <div class="tank-controls"><span id="tank-state" role="status"><i class="led"></i> Reef habitat</span><button class="shell-button" id="feed"><b>+</b> Feed fish</button></div>
+    </section>
+    <section class="window player" id="player" aria-label="Planet Media Player">
+      <div class="chrome" data-title="Planet Media Player"></div>
+      <div class="player-case">
+        <div class="lcd">
+          <div class="lcd-top"><span>PLANET AUDIO</span><span id="track-num">01 / 03</span></div>
+          <div class="track-title" id="track-title">Aquatic Drift</div>
+          <div class="readout"><div id="eq" aria-hidden="true"></div><time id="timer">00:00</time></div>
+        </div>
+        <div class="transport"><button id="prev" aria-label="Previous track">❙◀</button><button id="play" aria-label="Play">▶</button><button id="next" aria-label="Next track">▶❙</button><span class="speaker-mark" aria-hidden="true">◖))</span><input id="volume" type="range" min="0" max="100" value="55" aria-label="Player volume"></div>
+      </div>
+    </section>
+    <section class="window dialog" id="planet" aria-label="My Planet" hidden>
+      <div class="chrome" data-title="My Planet"></div><div class="app-body">
+        <div class="app-heading"><img src="assets/planet.png" alt=""><div><small>PERSONAL BIOSPHERE</small><h2>My Planet</h2></div></div>
+        <p>PLANET.EXE imagines a computer that feels alive. Water cools its circuits, leaves collect its light, and every device has a place in your habitat.</p>
+        <h3>Installed devices</h3><div id="installed"></div><button class="shell-button" data-open="devices">Browse Eco Devices</button>
+      </div></section>
+    <section class="window dialog" id="devices" aria-label="Eco Devices" hidden>
+      <div class="chrome" data-title="Eco Devices"></div><div class="app-body">
+        <div class="app-heading"><img src="assets/devices.png" alt=""><div><small>HARDWARE LIBRARY</small><h2>Eco Devices</h2></div></div>
+        <p>Choose a concept device to install in your local biosphere.</p><div id="catalog"></div>
+      </div></section>
+    <section class="window dialog" id="info" aria-label="System Info" hidden>
+      <div class="chrome" data-title="System Info"></div><div class="app-body">
+        <div class="app-heading"><img src="assets/info.png" alt=""><div><small>SYSTEM PROPERTIES</small><h2>Planet OS</h2></div></div>
+        <dl id="properties"></dl><h3>Desktop controls</h3><p>Drag a title bar to move its window. Use the taskbar to switch windows. Tab and Enter operate controls, and Esc dismisses the Planet menu.</p>
+      </div></section>
+    <section class="window dialog" id="bin" aria-label="Recycle Bin" hidden>
+      <div class="chrome" data-title="Recycle Bin"></div><div class="app-body">
+        <div class="app-heading"><img src="assets/bin.png" alt=""><div><small>RECOVERY UTILITY</small><h2>Recycle Bin</h2></div></div>
+        <div id="recycled"></div>
+      </div></section>
+  </main>
+  <nav id="start-menu" aria-label="Planet menu" hidden><header><img src="assets/planet.png" alt=""><strong>Planet OS</strong></header><div id="programs"></div></nav>
+  <footer class="taskbar">
+    <button id="start" aria-expanded="false" aria-controls="start-menu"><img src="assets/planet.png" alt="">Planet</button>
+    <span class="grip"></span><div id="tasks" aria-label="Open windows"></div>
+    <div class="tray"><button id="mute" aria-label="Mute sound" title="Mute sound"></button><time id="clock"></time></div>
+  </footer>
+</body></html>
